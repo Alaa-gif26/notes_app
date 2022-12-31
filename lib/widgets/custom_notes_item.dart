@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'Add_note_bottom_sheet.dart';
+
 class NotesItem extends StatelessWidget {
   const NotesItem({super.key});
 
@@ -21,7 +23,7 @@ class NotesItem extends StatelessWidget {
           children: [
             ListTile(
               selectedColor: Colors.black,
-              title:const  Text(
+              title: const Text(
                 "Flutter Tips",
                 style: TextStyle(fontSize: 26, color: Colors.black),
               ),
@@ -31,21 +33,25 @@ class NotesItem extends StatelessWidget {
                   color: Colors.black,
                   size: 24,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  
+                },
               ),
               subtitle: Padding(
-                padding: const EdgeInsets.only(top:16.0,bottom: 16),
+                padding: const EdgeInsets.only(top: 16.0, bottom: 16),
                 child: Text(
                   "build your career with tharwat samy",
-                  style: TextStyle(fontSize: 18,color: Colors.black.withOpacity(0.5)),
+                  style: TextStyle(
+                      fontSize: 18, color: Colors.black.withOpacity(0.5)),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right:24.0),
+              padding: const EdgeInsets.only(right: 24.0),
               child: Text(
                 "May 21, 2022",
-                style: TextStyle(fontSize: 16,color: Colors.black.withOpacity(0.4)),
+                style: TextStyle(
+                    fontSize: 16, color: Colors.black.withOpacity(0.4)),
               ),
             ),
           ],
@@ -54,3 +60,4 @@ class NotesItem extends StatelessWidget {
     );
   }
 }
+
