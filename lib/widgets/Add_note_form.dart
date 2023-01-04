@@ -10,7 +10,6 @@ import 'custom_button.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({super.key});
-
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
 }
@@ -35,7 +34,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             }),
             hint: "Title",
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           CustomTextField(
@@ -45,25 +44,31 @@ class _AddNoteFormState extends State<AddNoteForm> {
             hint: "Content",
             maxLines: 5,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          CustomButon(
-            onTap: () {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-                var noteModel = NoteModel(
-                    title: title!,
-                    subtitle: subtitle!,
-                    date: DateTime.now().toString(),
-                    color: Colors.blue.value);
-                BlocProvider.of<AddNoteCubitCubit>(context).addNote(noteModel);
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-                setState(() {});
-              }
+          BlocBuilder<AddNoteCubitCubit, AddNoteCubitState>(
+            builder: (context, state) {
+              return CustomButon(
+                isLoading: state is AddNoteCubitLoading ?true:false,
+                onTap: () {
+                  if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
+                    var noteModel = NoteModel(
+                        title: title!,
+                        subtitle: subtitle!,
+                        date: DateTime.now().toString(),
+                        color: Colors.blue.value);
+                    BlocProvider.of<AddNoteCubitCubit>(context)
+                        .addNote(noteModel);
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                },
+                text: "Add",
+              );
             },
-            text: "Add",
           ),
           SizedBox(
             height: 10,
