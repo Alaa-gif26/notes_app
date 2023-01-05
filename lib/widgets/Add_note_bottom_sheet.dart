@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit_cubit.dart';
 import 'package:notes_app/widgets/Add_note_form.dart';
-import 'package:notes_app/widgets/custom_text_field.dart';
 
-import 'custom_button.dart';
 
 class AddNoteBottomSheet extends StatefulWidget {
   const AddNoteBottomSheet({super.key});
@@ -32,9 +29,9 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
       }, builder: (context, state) {
         return AbsorbPointer(
           absorbing: state is AddNoteCubitLoading ? true : false,
-          child:const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: SingleChildScrollView(child: AddNoteForm()),
+          child: Padding(
+            padding: EdgeInsets.only(left: 16.0,right: 16,bottom: MediaQuery.of(context).viewInsets.bottom),
+            child:const SingleChildScrollView(child: AddNoteForm()),
           ),
         );
       }),
