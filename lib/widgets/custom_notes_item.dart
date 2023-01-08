@@ -21,16 +21,16 @@ class NotesItem extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.only(top: 24, bottom: 24, left: 16),
           decoration: BoxDecoration(
-              color:  Color(note.color),
+              color: Color(note.color),
               borderRadius: BorderRadius.circular(16)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               ListTile(
                 selectedColor: Colors.black,
-                title:  Text(
-                 note.title ,
-                  style:const  TextStyle(fontSize: 26, color: Colors.black),
+                title: Text(
+                  note.title,
+                  style: const TextStyle(fontSize: 26, color: Colors.black),
                 ),
                 trailing: IconButton(
                   icon: Icon(
@@ -38,11 +38,14 @@ class NotesItem extends StatelessWidget {
                     color: Colors.black,
                     size: 24,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    note.delete();
+                  },
                 ),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 16.0, bottom: 16),
-                  child: Text(note.subtitle,
+                  child: Text(
+                    note.subtitle,
                     style: TextStyle(
                         fontSize: 18, color: Colors.black.withOpacity(0.5)),
                   ),
@@ -50,7 +53,8 @@ class NotesItem extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 24.0),
-                child: Text(note.date,
+                child: Text(
+                  note.date,
                   style: TextStyle(
                       fontSize: 16, color: Colors.black.withOpacity(0.4)),
                 ),
