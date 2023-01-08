@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/Models/Note_model.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/views/Edit_note_view.dart';
 
 class NotesItem extends StatelessWidget {
@@ -33,13 +35,15 @@ class NotesItem extends StatelessWidget {
                   style: const TextStyle(fontSize: 26, color: Colors.black),
                 ),
                 trailing: IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     FontAwesomeIcons.trash,
                     color: Colors.black,
                     size: 24,
                   ),
                   onPressed: () {
                     note.delete();
+
+                    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                   },
                 ),
                 subtitle: Padding(
