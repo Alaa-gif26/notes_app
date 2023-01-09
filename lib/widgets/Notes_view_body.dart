@@ -2,13 +2,13 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/Models/Note_model.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/widgets/Notes_List_view.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
 
 class NotesViewBody extends StatefulWidget {
   const NotesViewBody({super.key});
-
   @override
   State<NotesViewBody> createState() => _NotesViewBodyState();
 }
@@ -27,7 +27,7 @@ class _NotesViewBodyState extends State<NotesViewBody> {
         SizedBox(
           height: 50,
         ),
-        CustomAppBar(
+        CustomAppBar(,
           icon: Icons.search,
           title: 'Notes',
         ),
